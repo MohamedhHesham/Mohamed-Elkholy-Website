@@ -545,19 +545,23 @@
         }
 
         .video-container {
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            border-radius: 10px;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(45, 68, 74, 0.15); /* Slate Gray shadow */
-            border: 3px solid #42A5F5;
+            border-radius: 12px; /* rounded corners */
+            border: 3px solid #971520; /* Soft Terracotta accent */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* soft shadow */
+            background-color: #FBF4EF; /* Warm Off background */
         }
 
-        .video-element {
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
+            border: none;
         }
 
         /* Modal Styles */
@@ -1166,10 +1170,7 @@
                     </div>
                     <div id="pharmacy-video" class="video-preview">
                         <div class="video-container">
-                            <video class="video-element" controls>
-                                <source src="Videos/Pharmacy.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
+                            <iframe src="https://drive.google.com/file/d/1c0lrfsNvjCPtY4xdqskUWEHM-mY6FpOZ/preview" allow="autoplay" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
@@ -1184,10 +1185,7 @@
                     </div>
                     <div id="robot-video" class="video-preview">
                         <div class="video-container">
-                            <video class="video-element" controls>
-                                <source src="Videos/Maze.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
+                            <iframe src="https://drive.google.com/file/d/1GkfnZp4HGJB5igk0llrFQ_zYIp5zFVQY/preview" allow="autoplay" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
@@ -1332,7 +1330,7 @@
                 <a href="tel:01505751939" class="social-link">
                     <i class="fas fa-phone"></i>
                 </a>
-                <a href="https://github.com/yourusername" class="social-link" target="_blank">
+                <a href="https://github.com/MohamedhHesham" class="social-link" target="_blank">
                     <i class="fab fa-github"></i>
                 </a>
             </div>
@@ -1434,14 +1432,10 @@
             const preview = document.getElementById(videoId);
             const allVideoPreviews = document.querySelectorAll('.video-preview');
             
-            // Hide all other video previews and pause videos
+            // Hide all other video previews
             allVideoPreviews.forEach(p => {
                 if (p.id !== videoId) {
                     p.classList.remove('active');
-                    const video = p.querySelector('video');
-                    if (video) {
-                        video.pause();
-                    }
                 }
             });
             
